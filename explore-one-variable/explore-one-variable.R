@@ -114,3 +114,23 @@ median.friend.by_gender <- by(data = pf$friend_count,
 male <- unname(median.friend.by_gender["male"])
 female <- unname(median.friend.by_gender["female"])
 abs(x = male - female)
+
+## blue chart
+
+ggplot(data = pf,
+       aes(x = friend_count)) +
+    geom_histogram(binwidth = 25,
+                   colour = "darkgreen",
+                   fill = "white") +
+    geom_density() + 
+    scale_x_continuous(limits = c(0, 1000),
+                       breaks = seq(0, 1000, 100)) +
+## title
+    ggtitle(label = "Facebook friends count frequency") +
+    xlab(label = "Friend count") +
+    ylab(label = "Frequency")
+
+#########################################
+## difference between scale_x_discrete ##
+## and scale_x_continuous ?            ##
+#########################################

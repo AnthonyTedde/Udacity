@@ -24,8 +24,9 @@ med <- median(x = pf$friend_count,
 av <- mean(x = pf$friend_count)
 ggplot(data = pf,
        aes(x = friend_count)) +
-    geom_histogram() +
-    stat_bin(binwidth = 25) +
+    geom_histogram(binwidth = 30,
+                   color = 'black',
+                   fill = '#099DD9') +
     scale_x_continuous(limits = c(0, 1000),
                        breaks = seq(0, 1000, 100)) +
     geom_vline(xintercept = med,
