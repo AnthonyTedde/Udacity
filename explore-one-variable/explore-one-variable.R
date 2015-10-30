@@ -1,18 +1,6 @@
-library('ggplot2')
-
-url <- paste("https://s3.amazonaws.com",
-             "udacity-hosted-downloads",
-             "ud651",
-             "pseudo_facebook.tsv",
-             sep = "/")
-file.name <- "pseudo_facebook.tsv"
-
-## By default ess data directory: (setq ess-directory "~/data/")
-if(!file.exists(file.name))
-    file.tsv <- download.file(url = url,
-                            destfile = "pseudo_facebook.tsv",
-                            method = 'libcurl') 
-pf <- read.delim(file.name, sep="\t")
+setwd('~/workspace/udacity/explore-one-variable/')
+source('lib.R')
+source('data.R')
 
 ## Give the columns names
 names(pf)
