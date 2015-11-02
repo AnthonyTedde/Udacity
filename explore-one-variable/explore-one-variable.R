@@ -1,6 +1,6 @@
 setwd('~/workspace/udacity/explore-one-variable/')
 source('lib.R')
-source('data.R')
+source('data/data.R')
 
 ## Give the columns names
 names(pf)
@@ -134,3 +134,42 @@ ggplot(data = pf,
 ## difference between scale_x_discrete ##
 ## and scale_x_continuous ?            ##
 #########################################
+
+library('gridExtra')
+p1 <- ggplot(aes(x = friend_count),
+             data = pf) +
+    geom_histogram(binwidth = 50,
+                   color = '#222222',
+                   fill = 'darkgreen') +
+    scale_x_continuous(limits = c(0, 1000),
+                       breaks = seq(0, 1000, 100)) +
+    ## title
+    ggtitle("Facebook friend count") +
+    xlab("# of friends") +
+    ylab("Sample")
+
+p2 <- ggplot(aes(x=log10(friend_count + 1)),
+             data = pf) +
+    geom_histogram(fill = '#FF2222',
+                   color = '#222222')
+
+                 
+p3 <- ggplot(aes(x = sqrt(friend_count)),
+             data = pf) +
+    geom_histogram()
+
+grid.arrange(p1,
+             p2,
+             p3,
+             ncol = 1)
+
+## Or better:
+p1 <- ggplot(aes(x = friend_count),
+             data = pf) +
+    geom_histogram()
+p2 <- p1 + scale_x_log10()
+p3 <- p1 + scale_x_sqrt()
+grid.arrange(p1,
+             p2,
+             p3,
+             ncol = 1)
