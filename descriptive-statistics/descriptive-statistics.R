@@ -47,3 +47,24 @@ unname(hp_quantile['25%'])              # [1] 96.5
 hp_quantile[2]                          # return: 
 ##  25% 
 ## 96.5
+
+#############################################################################
+## ## IQR                                                                  ##
+##                                                                         ##
+## Usage:                                                                  ##
+##                                                                         ##
+##      IQR(x, na.rm = FALSE, type = 7)                                    ##
+##                                                                         ##
+## Arguments:                                                              ##
+##                                                                         ##
+##        x: a numeric vector.                                             ##
+##                                                                         ##
+##    na.rm: logical. Should missing values be removed?                    ##
+##                                                                         ##
+##     type: an integer selecting one of the many quantile algorithms, see ##
+##           'quantile'.                                                   ##
+#############################################################################
+## following two rows give same solution
+IQR(x = mtcars$hp)
+unname(hp_quantile['75%']) - unname(hp_quantile['25%'])
+    
